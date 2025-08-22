@@ -54,14 +54,20 @@ class Kernel implements KernelContract
      *
      * @var array<int, class-string|string>
      */
-    protected $middleware = [];
+    
 
     /**
      * The application's route middleware groups.
      *
      * @var array<string, array<int, class-string|string>>
      */
-    protected $middlewareGroups = [];
+    protected $middlewareGroups = [
+    'web' => [
+        // các middleware khác...
+        \App\Http\Middleware\SetLocale::class,
+    ],
+    ];
+
 
     /**
      * The application's route middleware.
@@ -70,7 +76,13 @@ class Kernel implements KernelContract
      *
      * @deprecated
      */
-    protected $routeMiddleware = [];
+    protected $middleware = [
+    ];
+    protected $routeMiddleware = [
+        
+        'locale' => \App\Http\Middleware\SetLocale::class,
+
+    ];
 
     /**
      * The application's middleware aliases.
